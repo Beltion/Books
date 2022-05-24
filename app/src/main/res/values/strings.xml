@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Учет книг</string>
+    <string name="book_title_label">Название книги</string>
+    <string name="book_details_label">Описание</string>
+    <string name="god_book_label"> Дата публикации: </string>
+    <string name="kod_book_label">Код книги:</string>
+    <string name="book_readed_label">Есть в наличии</string>
+    <string name="book_utor_label">Автор книги</string>
+    <string name="publish_title_label">Название издательства</string>
+    <string name="adres_publish_label">Адрес издательства</string>
+    <string name="site_publish_label">Сайт издательства</string>
+    <string name="publish_label">Год издания</string>
+    <string name="count_page_label">Количество страниц</string>
+    <string name="hardcover_label">Тип переплета</string>
+</resources>
