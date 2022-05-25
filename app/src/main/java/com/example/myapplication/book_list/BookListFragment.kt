@@ -1,4 +1,6 @@
 package com.example.myapplication.book_list
 
-class BookListFragment {
+import androidx.fragment.app.Fragment
+
+class BookListFragment : Fragment() {
 }
