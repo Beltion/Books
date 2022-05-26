@@ -1,5 +1,6 @@
 package com.example.myapplication.utils
 
+import com.example.myapplication.entities.books.Book
 import com.example.myapplication.entities.user.LoginUser
 import com.example.myapplication.entities.user.RegUser
 import com.example.myapplication.entities.user.SrvAnswerUser
@@ -24,7 +25,7 @@ interface BookApi {
     ): SrvAnswerUser
 
     @GET("books")
-    suspend fun fetchBooks(): SrvAnswerUser
+    suspend fun fetchBooks(): List<Book>
 
     @POST("books")
     suspend fun createBook(): SrvAnswerUser

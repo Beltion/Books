@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:background="@color/string_backround"
+        android:background="@color/string_background"
         android:orientation="vertical"
         android:visibility="visible">
 

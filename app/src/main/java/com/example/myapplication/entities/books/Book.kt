@@ -5,7 +5,7 @@ data class Book(
     val title: String = "",
     val abstract: String = "",
     val countpage: String = "",
-    val status: String = "",
+    val status: Boolean = false,
     val author: Author? = null,
     val code: String = "",
     val publisher: Publisher? = null,
