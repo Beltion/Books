@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         fragmentContainer = findViewById(R.id.main_frame_layout)
-        changeFragment(BookMenuFragment())
+        changeFragment(StartScreenFragment())
     }
 
     fun changeFragment(f: Fragment) {
