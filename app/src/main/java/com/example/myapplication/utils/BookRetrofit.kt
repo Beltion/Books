@@ -30,7 +30,7 @@ interface BookApi {
 
     @POST("books")
     suspend fun createBook(
-        @Body b: Book
+        @Body b: EditBook
     ): SrvAnswerUser
 
     @PUT("book/{id}")
@@ -63,7 +63,7 @@ object RetrofitClient {
     fun getBookRetrofit(baseUrl: String): Retrofit {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().build()
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
         if (retrofitBook == null) {
             retrofitBook = Retrofit.Builder()

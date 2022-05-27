@@ -18,7 +18,7 @@ class BookEditListViewModel : ViewModel(), BooksListener {
 
     private val _bookList = MutableLiveData<List<Book>>()
     val bookList: LiveData<List<Book>> = _bookList
-
+    var bookId: Int? = null
     val bookMsg: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
@@ -55,6 +55,7 @@ class BookEditListViewModel : ViewModel(), BooksListener {
 
     override fun onBookClicked(b: Book) {
         bookMsg.value = b.title
+        bookId = bookList.value?.indexOf(b)
         toEditCard.value = b
     }
 

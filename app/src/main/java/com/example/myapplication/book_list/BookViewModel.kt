@@ -11,4 +11,12 @@ class BookViewModel : ViewModel(){
     var book: Book? = null
     val yes = "Да"
     val no = "Нет"
+
+    val back: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    fun onBack(){
+        back.value = ""
+    }
 }

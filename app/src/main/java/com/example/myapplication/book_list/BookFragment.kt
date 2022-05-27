@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.example.myapplication.MainActivity
 import com.example.myapplication.MainViewModel
+import com.example.myapplication.book_menu.BookMenuFragment
 import com.example.myapplication.databinding.CardBookBinding
 import com.example.myapplication.databinding.ItemListBookBinding
 
@@ -33,6 +35,10 @@ class BookFragment : Fragment(){
         _binding?.viewModel?.bookMsg?.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT)
                 .show()
+        }
+
+        _binding?.viewModel?.back?.observe(viewLifecycleOwner) {
+            (requireActivity() as MainActivity).changeFragment(BookListFragment())
         }
 
         return binding.root

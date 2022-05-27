@@ -26,11 +26,9 @@ class CreateFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel.book = aViewModel.bufferBook
-        viewModel.bookId = aViewModel.buffBookId
+
         viewModel.authors = aViewModel.authors
         viewModel.publishers = aViewModel.publishers
-        viewModel.initData()
         _binding = BookCreateBinding.inflate(inflater, container, false)
         _binding?.lifecycleOwner = this
         _binding?.viewModel = viewModel

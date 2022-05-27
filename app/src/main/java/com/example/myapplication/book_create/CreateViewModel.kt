@@ -17,8 +17,6 @@ class CreateViewModel  : ViewModel() {
         MutableLiveData<Int>()
     }
 
-    var book: Book? = null
-    var bookId: Int? = null
     lateinit var authors: List<String>
     lateinit var publishers: List<String>
 
@@ -36,25 +34,6 @@ class CreateViewModel  : ViewModel() {
     var code: String = ""
     var yearpublish: String = ""
 
-
-    fun initData() {
-        book?.let {
-            title = it.title
-            hardcover = it.hardcover
-            hardcoverPosition = if (hardcover == "твердый"){
-                1
-            } else {
-                0
-            }
-            findAuthorPosition("${it.author?.firstname} ${it.author?.lastname}")
-            findPublisherPosition(it.publisher?.namepublisher ?: "")
-            abstract = it.abstract
-            countpage = it.countpage
-            status = it.status
-            code = it.code
-            yearpublish = it.yearpublish
-        }
-    }
 
     private fun findAuthorPosition(author: String) {
         authors.forEachIndexed { index, s ->
@@ -74,9 +53,10 @@ class CreateViewModel  : ViewModel() {
 
     fun onSave(){
         viewModelScope.launch {
-            bookId?.let {
+            findAuthorPosition(authors[authorsPosition])
+            findPublisherPosition(publishers[publisherPosition] )
                 val b = EditBook(
-                    hardcover = hardcover,
+                    hardcover = hardcoverEntities[hardcoverPosition],
                     title = title,
                     abstract = abstract,
                     countpage = countpage,
@@ -86,13 +66,12 @@ class CreateViewModel  : ViewModel() {
                     publishid = publisherPosition,
                     yearpublish = yearpublish
                 )
-                BookRepository().editBook(it, b)?.let {
+                BookRepository().createBook(b)?.let {
                     bookMsg.value = "Книга успешно сохранена"
                     toBookList.value = 1
                 } ?: kotlin.run {
                     bookMsg.value = "Не удалось сохранить книгу"
                 }
-            }
 
         }
     }

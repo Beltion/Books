@@ -1,5 +1,6 @@
 package com.example.myapplication.repositories
 
+import android.util.Log
 import com.example.myapplication.entities.books.Author
 import com.example.myapplication.entities.books.Book
 import com.example.myapplication.entities.books.EditBook
@@ -18,7 +19,7 @@ class BookRepository {
         }
     }
 
-    suspend fun createBook(b: Book) : SrvAnswerUser? {
+    suspend fun createBook(b: EditBook) : SrvAnswerUser? {
         return try {
             RetrofitServices.book.createBook(b)
         } catch (t: Throwable){
@@ -29,6 +30,7 @@ class BookRepository {
 
     suspend fun editBook(id: Int, b:EditBook) : SrvAnswerUser? {
         return try {
+            Log.e("hhh", b.toString())
             RetrofitServices.book.editBook(id, b)
         } catch (t: Throwable){
             t.printStackTrace()

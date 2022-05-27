@@ -37,6 +37,7 @@ class BookEditListFragment : Fragment() {
 
         _binding?.viewModel?.toEditCard?.observe(viewLifecycleOwner) {
             aViewModel.bufferBook = it
+            aViewModel.buffBookId =   _binding?.viewModel?.bookId
             (requireActivity() as MainActivity).changeFragment(EditFragment())
         }
         _binding?.viewModel?.back?.observe(viewLifecycleOwner) {
