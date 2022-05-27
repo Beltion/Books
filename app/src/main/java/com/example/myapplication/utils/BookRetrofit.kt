@@ -1,6 +1,8 @@
 package com.example.myapplication.utils
 
+import com.example.myapplication.entities.books.Author
 import com.example.myapplication.entities.books.Book
+import com.example.myapplication.entities.books.Publisher
 import com.example.myapplication.entities.user.LoginUser
 import com.example.myapplication.entities.user.RegUser
 import com.example.myapplication.entities.user.SrvAnswerUser
@@ -8,9 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface BookApi {
 
@@ -28,8 +28,31 @@ interface BookApi {
     suspend fun fetchBooks(): List<Book>
 
     @POST("books")
-    suspend fun createBook(): SrvAnswerUser
+    suspend fun createBook(
+        @Body b: Book
+    ): SrvAnswerUser
 
+    @PUT("book/{id}")
+    suspend fun editBook(
+        @Path("id") id: Int,
+        @Body b: Book
+    ): SrvAnswerUser
+
+    @DELETE("book/{id}")
+    suspend fun delBook(
+        @Path("id") id: Int
+    ): SrvAnswerUser
+
+    @GET("books/{text}")
+    suspend fun findBooks(
+        @Path("text") t: String
+    ): List<Book>
+
+    @GET("authors")
+    suspend fun fetchAuthors(): List<Author>
+
+    @GET("publishers")
+    suspend fun fetchPublishers(): List<Publisher>
 }
 
 object RetrofitClient {
