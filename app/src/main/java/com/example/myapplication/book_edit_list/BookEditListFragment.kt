@@ -1,4 +1,4 @@
-package com.example.myapplication.book_list
+package com.example.myapplication.book_edit_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.myapplication.MainActivity
 import com.example.myapplication.MainViewModel
-import com.example.myapplication.book_edit_list.EditFragment
-import com.example.myapplication.databinding.BookListBinding
+import com.example.myapplication.book_list.BookListAdapter
+import com.example.myapplication.databinding.BookEditListBinding
 
-class BookListFragment : Fragment() {
+class BookEditListFragment : Fragment() {
 
-    private var _binding: BookListBinding? = null
+    private var _binding: BookEditListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: BookListViewModel by viewModels()
+    private val viewModel: BookEditListViewModel by viewModels()
     private val aViewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
@@ -25,7 +25,7 @@ class BookListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = BookListBinding.inflate(inflater, container, false)
+        _binding = BookEditListBinding.inflate(inflater, container, false)
         _binding?.lifecycleOwner = this
         _binding?.viewModel = viewModel
         _binding?.adapter = BookListAdapter(listOf(), viewModel)
@@ -33,7 +33,8 @@ class BookListFragment : Fragment() {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT)
                 .show()
         }
-        _binding?.viewModel?.toBookCard?.observe(viewLifecycleOwner) {
+
+        _binding?.viewModel?.toEditCard?.observe(viewLifecycleOwner) {
             aViewModel.bufferBook = it
             (requireActivity() as MainActivity).changeFragment(EditFragment())
         }

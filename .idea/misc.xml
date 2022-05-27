@@ -6,8 +6,12 @@
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.13541666666666666" />
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/book.xml" value="0.22826086956521738" />
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/book_del.xml" value="0.225" />
+        <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/book_edit_list.xml" value="0.22604166666666667" />
+        <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/book_find.xml" value="0.225" />
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/book_list.xml" value="0.16289592760180996" />
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/book_menu.xml" value="0.17239583333333333" />
+        <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/card_book.xml" value="0.264" />
+        <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/item_edit_book.xml" value="0.225" />
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/item_list_book.xml" value="0.1" />
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/list_item_book.xml" value="0.22826086956521738" />
         <entry key="..\:/Development/AndroidProjects/SeveralProjects/MyApplication/MyApplication/app/src/main/res/layout/login.xml" value="0.22826086956521738" />

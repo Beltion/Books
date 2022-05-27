@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.book_list.BookViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Золотой Вавилон" />
+
+        <TextView
+            android:id="@+id/author_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Автор: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.author.firstname + ' ' + viewModel.book.author.lastname}"
+            app:layout_constraintStart_toEndOf="@+id/author_label"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Виктор Викторович" />
+
+        <TextView
+            android:id="@+id/status_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="В наличии: "
+            app:layout_constraintEnd_toStartOf="@+id/status"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.status ? viewModel.yes : viewModel.no}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Да" />
+
+        <TextView
+            android:id="@+id/page_count_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Кол-во страниц: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_label" />
+
+        <TextView
+            android:id="@+id/page_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.countpage}"
+            app:layout_constraintStart_toEndOf="@+id/page_count_label"
+            app:layout_constraintTop_toBottomOf="@+id/author_label"
+            tools:text="8" />
+
+        <TextView
+            android:id="@+id/hardcover_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Переплёт: "
+            app:layout_constraintEnd_toStartOf="@+id/hardcover"
+            app:layout_constraintTop_toBottomOf="@+id/author_label" />
+
+        <TextView
+            android:id="@+id/hardcover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.hardcover}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_label"
+            tools:text="твёрдый" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.abstract}"
+            app:layout_constraintTop_toBottomOf="@+id/page_count_label"
+            tools:text="В маленьком провинциальном городке Дерри много лет назад семерым подросткам пришлось столкнуться с кромешным ужасом - живым воплощением ада.\nПрошли годы... Подростки повзрослели, и ничто, казалось, не предвещало новой беды. Но кошмар прошлого вернулся, неведомая сила повлекла семерых друзей назад, в новую битву со Злом. Ибо в Дерри опять льется кровь и бесследно исчезают люди. Ибо вернулось порождение ночного кошмара, настолько невероятное, что даже не имеет имени..." />
+
+        <TextView
+            android:id="@+id/code_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Код: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/desc" />
+
+        <TextView
+            android:id="@+id/code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.code}"
+            app:layout_constraintStart_toEndOf="@id/code_label"
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            tools:text="923-5-21-139112-8" />
+
+        <TextView
+            android:id="@+id/publisher_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Издательство: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/code_label" />
+
+        <TextView
+            android:id="@+id/publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.publisher.namepublisher}"
+            app:layout_constraintStart_toEndOf="@id/publisher_label"
+            app:layout_constraintTop_toBottomOf="@+id/code_label"
+            tools:text="АСТ" />
+
+        <TextView
+            android:id="@+id/publisher_address_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Адрес: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/publisher_label" />
+
+        <TextView
+            android:id="@+id/publisher_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.publisher.address}"
+            app:layout_constraintStart_toEndOf="@id/publisher_address_label"
+            app:layout_constraintTop_toBottomOf="@+id/publisher_label"
+            tools:text="г.Москва, ул.Порошина, д.89" />
+
+        <TextView
+            android:id="@+id/publisher_site_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Сайт: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/publisher_address_label" />
+
+        <TextView
+            android:id="@+id/publisher_site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.publisher.site}"
+            app:layout_constraintStart_toEndOf="@id/publisher_site_label"
+            app:layout_constraintTop_toBottomOf="@+id/publisher_address_label"
+            tools:text="https://ast.ru/" />
+
+        <TextView
+            android:id="@+id/publisher_year_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Год издания: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/publisher_site_label" />
+
+        <TextView
+            android:id="@+id/publisher_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{viewModel.book.yearpublish}"
+            app:layout_constraintStart_toEndOf="@id/publisher_year_label"
+            app:layout_constraintTop_toBottomOf="@+id/publisher_site_label"
+            tools:text="2010/" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

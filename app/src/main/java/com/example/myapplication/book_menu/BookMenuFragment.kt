@@ -10,11 +10,9 @@ import com.example.myapplication.MainActivity
 import com.example.myapplication.R
 import com.example.myapplication.book_create.CreateFragment
 import com.example.myapplication.book_del.DelFragment
-import com.example.myapplication.book_edit.EditFragment
+import com.example.myapplication.book_edit_list.BookEditListFragment
 import com.example.myapplication.book_find.FindFragment
 import com.example.myapplication.book_list.BookListFragment
-import com.example.myapplication.login.LoginFragment
-import com.example.myapplication.reg.RegistrationFragment
 
 class BookMenuFragment : Fragment() {
 
@@ -45,7 +43,7 @@ class BookMenuFragment : Fragment() {
             (requireActivity() as MainActivity).changeFragment(CreateFragment())
         }
         editBtn.setOnClickListener {
-            (requireActivity() as MainActivity).changeFragment(EditFragment())
+            (requireActivity() as MainActivity).changeFragment(BookEditListFragment())
         }
         delBtn.setOnClickListener {
             (requireActivity() as MainActivity).changeFragment(DelFragment())

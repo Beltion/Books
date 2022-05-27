@@ -23,6 +23,10 @@ class BookListViewModel : ViewModel(), BooksListener {
         MutableLiveData<String>()
     }
 
+    val toBookCard: MutableLiveData<Book> by lazy {
+        MutableLiveData<Book>()
+    }
+
     init {
         getBooks()
     }
@@ -46,7 +50,7 @@ class BookListViewModel : ViewModel(), BooksListener {
     }.flowOn(Dispatchers.IO)
 
     override fun onBookClicked(b: Book) {
-        bookMsg.value = b.title
+        toBookCard.value = b
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication.book_del
+package com.example.myapplication.book_find
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,20 +14,18 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class DelBookViewModel : ViewModel(), BooksListener {
+class FindViewModel : ViewModel(), BooksListener {
 
     private val _bookList = MutableLiveData<List<Book>>()
     val bookList: LiveData<List<Book>> = _bookList
+
+    var findText: String = ""
 
     val bookMsg: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
-    init {
-        getBooks()
-    }
-
-    private fun getBooks() {
+    fun onFindClick() {
         viewModelScope.launch {
             fetchBooks().catch {
                 bookMsg.value = "Не удалось получить список книг"
@@ -37,28 +35,21 @@ class DelBookViewModel : ViewModel(), BooksListener {
         }
     }
 
-    private fun fetchBooks() = flow<List<Book>> {
-        BookRepository().fetchBooks()?.let {
-            emit(it)
-        } ?: run {
-            bookMsg.value = "Не удалось получить список книг"
+    fun fetchBooks() = flow<List<Book>> {
+        if (findText.isNotEmpty()){
+            BookRepository().findBooks(findText)?.let {
+                emit(it)
+            } ?: run {
+                bookMsg.value = "Не удалось получить список книг"
+            }
+        } else {
+            bookMsg.value = "Заполните данные"
         }
+
     }.flowOn(Dispatchers.IO)
 
     override fun onBookClicked(b: Book) {
-        viewModelScope.launch {
-            val id = bookList.value?.indexOf(b)
-            if (id != null && id != -1){
-                BookRepository().delBook(id)?.let {
-                    bookMsg.value = "Книга удалена"
-                    fetchBooks()
-                } ?: run {
-                    bookMsg.value = "Не удалось удалить книгу"
-                }
-            } else {
-                bookMsg.value = "Не удалось удалить книгу"
-            }
-        }
+
     }
 
 }

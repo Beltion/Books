@@ -1,4 +1,4 @@
-package com.example.myapplication.book_del
+package com.example.myapplication.book_edit_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,13 +14,17 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class DelBookViewModel : ViewModel(), BooksListener {
+class BookEditListViewModel : ViewModel(), BooksListener {
 
     private val _bookList = MutableLiveData<List<Book>>()
     val bookList: LiveData<List<Book>> = _bookList
 
     val bookMsg: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
+    }
+
+    val toEditCard: MutableLiveData<Book> by lazy {
+        MutableLiveData<Book>()
     }
 
     init {
@@ -30,8 +34,8 @@ class DelBookViewModel : ViewModel(), BooksListener {
     private fun getBooks() {
         viewModelScope.launch {
             fetchBooks().catch {
-                bookMsg.value = "Не удалось получить список книг"
             }.collect {
+
                 _bookList.value = it
             }
         }
@@ -46,19 +50,8 @@ class DelBookViewModel : ViewModel(), BooksListener {
     }.flowOn(Dispatchers.IO)
 
     override fun onBookClicked(b: Book) {
-        viewModelScope.launch {
-            val id = bookList.value?.indexOf(b)
-            if (id != null && id != -1){
-                BookRepository().delBook(id)?.let {
-                    bookMsg.value = "Книга удалена"
-                    fetchBooks()
-                } ?: run {
-                    bookMsg.value = "Не удалось удалить книгу"
-                }
-            } else {
-                bookMsg.value = "Не удалось удалить книгу"
-            }
-        }
+        bookMsg.value = b.title
+        toEditCard.value = b
     }
 
 }
