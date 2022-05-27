@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.myapplication.MainActivity
 import com.example.myapplication.book_list.BookListAdapter
-import com.example.myapplication.book_list.BookListViewModel
+import com.example.myapplication.book_menu.BookMenuFragment
 import com.example.myapplication.databinding.BookDelBinding
-import com.example.myapplication.databinding.BookListBinding
 
 class DelFragment : Fragment() {
 
@@ -30,6 +30,9 @@ class DelFragment : Fragment() {
         _binding?.viewModel?.bookMsg?.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT)
                 .show()
+        }
+        _binding?.viewModel?.back?.observe(viewLifecycleOwner) {
+            (requireActivity() as MainActivity).changeFragment(BookMenuFragment())
         }
 
         return binding.root

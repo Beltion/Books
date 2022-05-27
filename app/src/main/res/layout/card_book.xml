@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{viewModel.book.title}"
             tools:text="Золотой Вавилон" />
 
         <TextView

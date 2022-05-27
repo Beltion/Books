@@ -27,6 +27,10 @@ class BookEditListViewModel : ViewModel(), BooksListener {
         MutableLiveData<Book>()
     }
 
+    val back: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     init {
         getBooks()
     }
@@ -52,6 +56,10 @@ class BookEditListViewModel : ViewModel(), BooksListener {
     override fun onBookClicked(b: Book) {
         bookMsg.value = b.title
         toEditCard.value = b
+    }
+
+    fun onBack(){
+        back.value = ""
     }
 
 }

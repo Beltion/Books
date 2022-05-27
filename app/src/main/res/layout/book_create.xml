@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.myapplication.book_edit_list.EditViewModel" />
+            type="com.example.myapplication.book_create.CreateViewModel" />
     </data>
 
     <ScrollView

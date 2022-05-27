@@ -1,6 +1,5 @@
-package com.example.myapplication.book_edit_list
+package com.example.myapplication.book_create
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,12 +8,12 @@ import com.example.myapplication.entities.books.EditBook
 import com.example.myapplication.repositories.BookRepository
 import kotlinx.coroutines.launch
 
-class EditViewModel : ViewModel() {
+class CreateViewModel  : ViewModel() {
     val bookMsg: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
-    val toBookEditList: MutableLiveData<Int> by lazy {
+    val toBookList: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
     }
 
@@ -74,36 +73,32 @@ class EditViewModel : ViewModel() {
     }
 
     fun onSave(){
-
         viewModelScope.launch {
-            Log.e("hhh", "1")
             bookId?.let {
                 val b = EditBook(
                     hardcover = hardcover,
-                            title = title,
-                            abstract = abstract,
-                            countpage = countpage,
-                            status = status,
-                            authorid = authorsPosition,
-                            code = code,
-                            publishid = publisherPosition,
-                            yearpublish = yearpublish
+                    title = title,
+                    abstract = abstract,
+                    countpage = countpage,
+                    status = status,
+                    authorid = authorsPosition,
+                    code = code,
+                    publishid = publisherPosition,
+                    yearpublish = yearpublish
                 )
                 BookRepository().editBook(it, b)?.let {
-                    bookMsg.value = "Данные успешно обновлены"
-                    toBookEditList.value = 1
+                    bookMsg.value = "Книга успешно сохранена"
+                    toBookList.value = 1
                 } ?: kotlin.run {
-                    bookMsg.value = "Не удалось обновить данные"
+                    bookMsg.value = "Не удалось сохранить книгу"
                 }
-
-                Log.e("hhh", "2")
             }
 
         }
     }
 
     fun onCancel(){
-        toBookEditList.value = 1
+        toBookList.value = 1
     }
 
 }

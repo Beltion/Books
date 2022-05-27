@@ -23,6 +23,10 @@ class DelBookViewModel : ViewModel(), BooksListener {
         MutableLiveData<String>()
     }
 
+    val back: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     init {
         getBooks()
     }
@@ -59,6 +63,10 @@ class DelBookViewModel : ViewModel(), BooksListener {
                 bookMsg.value = "Не удалось удалить книгу"
             }
         }
+    }
+
+    fun onBack(){
+        back.value = ""
     }
 
 }

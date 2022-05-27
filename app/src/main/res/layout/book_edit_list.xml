@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.myapplication.book_edit_list.BookEditListViewModel" />
+
         <variable
             name="adapter"
             type="com.example.myapplication.book_list.BookListAdapter" />
@@ -19,8 +21,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:setAdapter="@{adapter}"
-            app:submitList="@{viewModel.bookList}"/>
+            app:submitList="@{viewModel.bookList}" />
+
+        <Button
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Назад"
+            android:onClick="@{() -> viewModel.onBack()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

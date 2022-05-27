@@ -1,5 +1,6 @@
 package com.example.myapplication.book_list
 
+import android.util.Log
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemListBookBinding
 import com.example.myapplication.entities.books.Book

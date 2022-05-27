@@ -9,7 +9,7 @@ data class Book(
     val author: Author? = null,
     val code: String = "",
     val publisher: Publisher? = null,
-    val yearpublish: String = "",
+    val yearpublish: String = ""
 )
 
 

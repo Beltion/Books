@@ -27,11 +27,18 @@ class BookListViewModel : ViewModel(), BooksListener {
         MutableLiveData<Book>()
     }
 
+    val back: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    var id = -1
+
     init {
         getBooks()
     }
 
     private fun getBooks() {
+        Log.e("HHH", "BookListViewModel getBooks")
         viewModelScope.launch {
             fetchBooks().catch {
             }.collect {
@@ -50,7 +57,11 @@ class BookListViewModel : ViewModel(), BooksListener {
     }.flowOn(Dispatchers.IO)
 
     override fun onBookClicked(b: Book) {
+        id = bookList.value?.indexOf(b) ?: -1
         toBookCard.value = b
     }
 
+    fun onBack(){
+        back.value = ""
+    }
 }

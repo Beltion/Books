@@ -2,6 +2,7 @@ package com.example.myapplication.repositories
 
 import com.example.myapplication.entities.books.Author
 import com.example.myapplication.entities.books.Book
+import com.example.myapplication.entities.books.EditBook
 import com.example.myapplication.entities.books.Publisher
 import com.example.myapplication.entities.user.SrvAnswerUser
 import com.example.myapplication.utils.RetrofitServices
@@ -26,7 +27,7 @@ class BookRepository {
         }
     }
 
-    suspend fun editBook(id: Int, b:Book) : SrvAnswerUser? {
+    suspend fun editBook(id: Int, b:EditBook) : SrvAnswerUser? {
         return try {
             RetrofitServices.book.editBook(id, b)
         } catch (t: Throwable){

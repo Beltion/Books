@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.myapplication.MainActivity
 import com.example.myapplication.MainViewModel
 import com.example.myapplication.book_list.BookListAdapter
+import com.example.myapplication.book_menu.BookMenuFragment
 import com.example.myapplication.databinding.BookEditListBinding
 
 class BookEditListFragment : Fragment() {
@@ -26,7 +27,7 @@ class BookEditListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = BookEditListBinding.inflate(inflater, container, false)
-        _binding?.lifecycleOwner = this
+        _binding?.lifecycleOwner = viewLifecycleOwner
         _binding?.viewModel = viewModel
         _binding?.adapter = BookListAdapter(listOf(), viewModel)
         _binding?.viewModel?.bookMsg?.observe(viewLifecycleOwner) {
@@ -38,7 +39,9 @@ class BookEditListFragment : Fragment() {
             aViewModel.bufferBook = it
             (requireActivity() as MainActivity).changeFragment(EditFragment())
         }
-
+        _binding?.viewModel?.back?.observe(viewLifecycleOwner) {
+            (requireActivity() as MainActivity).changeFragment(BookMenuFragment())
+        }
         return binding.root
     }
 

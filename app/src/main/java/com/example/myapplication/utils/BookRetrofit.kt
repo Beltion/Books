@@ -2,6 +2,7 @@ package com.example.myapplication.utils
 
 import com.example.myapplication.entities.books.Author
 import com.example.myapplication.entities.books.Book
+import com.example.myapplication.entities.books.EditBook
 import com.example.myapplication.entities.books.Publisher
 import com.example.myapplication.entities.user.LoginUser
 import com.example.myapplication.entities.user.RegUser
@@ -35,7 +36,7 @@ interface BookApi {
     @PUT("book/{id}")
     suspend fun editBook(
         @Path("id") id: Int,
-        @Body b: Book
+        @Body b: EditBook
     ): SrvAnswerUser
 
     @DELETE("book/{id}")

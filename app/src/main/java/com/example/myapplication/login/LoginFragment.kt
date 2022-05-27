@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.myapplication.MainActivity
 import com.example.myapplication.R
+import com.example.myapplication.book_menu.BookMenuFragment
 import com.example.myapplication.databinding.LoginBinding
 import com.example.myapplication.start_screen.StartScreenFragment
 
@@ -34,7 +35,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.viewModel?.loginSuccessEvent?.observe(viewLifecycleOwner){
-//            (requireActivity() as MainActivity).changeFragment(StartScreenFragment())
+            (requireActivity() as MainActivity).changeFragment(BookMenuFragment())
         }
 
         return binding.root

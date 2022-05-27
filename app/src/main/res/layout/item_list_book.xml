@@ -6,6 +6,9 @@
         <variable
             name="book"
             type="com.example.myapplication.entities.books.Book" />
+        <variable
+            name="id"
+            type="com.example.myapplication.entities.books.Book" />
 
         <variable
             name="listener"

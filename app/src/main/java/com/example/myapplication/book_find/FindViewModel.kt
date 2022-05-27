@@ -25,6 +25,10 @@ class FindViewModel : ViewModel(), BooksListener {
         MutableLiveData<String>()
     }
 
+    val back: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     fun onFindClick() {
         viewModelScope.launch {
             fetchBooks().catch {
@@ -50,6 +54,10 @@ class FindViewModel : ViewModel(), BooksListener {
 
     override fun onBookClicked(b: Book) {
 
+    }
+
+    fun onBack(){
+        back.value = ""
     }
 
 }

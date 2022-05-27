@@ -3,6 +3,7 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.example.myapplication.book_menu.BookMenuFragment
@@ -19,6 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         fragmentContainer = findViewById(R.id.main_frame_layout)
+
+        viewModel.bookMsg.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT)
+                .show()
+        }
         changeFragment(StartScreenFragment())
     }
 
